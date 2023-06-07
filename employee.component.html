@@ -1,0 +1,121 @@
+<div class="dashboaard-content">
+    <div class="Container">
+    
+    <div class="card">
+    <div class="card-header">
+        
+                <h1>EmployeeDetails</h1>
+
+                <div class="row" style="padding-bottom: 10px;">
+                    <div class="col-sm-3">
+                        <b>FirstName :</b>
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" style="margin-left: 0;margin-top: 0%;margin-right: 0%;margin-bottom: 4%;" id="txtId" name="txtname" [(ngModel)]="employee.FirstName">
+                    </div>
+                    <div class="col-sm-3">
+                        <b>LastName :</b>
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" id="txtId" name="txtname" [(ngModel)]="employee.LastName">
+                    </div>
+                  </div>&nbsp;
+
+
+                  <div class="row" style="padding-bottom: 10px;">
+                    <div class="col-sm-3">
+                        <b>Address :</b>
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" id="txtId" name="txtname"  [(ngModel)]="employee.Address">
+                    </div>
+                    <div class="col-sm-3">
+                        <b>Age :</b>
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="number" id="txtId" name="txtname" [(ngModel)]="employee.Age">
+                    </div>
+                  </div>&nbsp;
+
+                  <div class="row" style="padding-bottom: 10px;">
+                    <div class="col-sm-3">
+                        <b>Salary :</b>
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="number" id="txtId" name="txtname" class="FormControl" [(ngModel)]="employee.Salary">
+                    </div>
+                    <div class="col-sm-3">
+                       
+                    </div>
+                    <div class="col-sm-3">
+                    </div>
+                  </div>
+                  <div class="row" style="padding-bottom: 10px;">
+                    <div class="col-sm-3">
+                        
+                    </div>
+                    <div class="col-md-3">
+                        
+                    </div>
+                    <div class="col-sm-3">
+                        <button (click)="SaveEmployees(employee)" type="button" class="btn btn-success" 
+                        *ngIf="employee.Id==0">Save</button>
+
+                        
+
+                    </div>
+                    <div class="col-sm-3"><button (click)="UpdateEmployees(employee)" type="button"
+                        class="btn btn-success"*ngIf="employee.Id>0">Update</button>
+                    </div>
+                  </div>
+
+
+<div class="col-md-12">
+    <div class="Container mt-3">
+        <h2>EmployeeDetails</h2>
+    
+        <b>Search:</b><input type="text" [(ngModel)]="pro"><br><br>
+
+                <table class="table table-bordered">
+                    <tr>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>Address</th>
+                        <th>Age</th>
+                        <th>Salary</th>
+                        <th colspan="2">Actions</th>
+                    </tr>
+                    <tr *ngFor="let item of empdata |filter:pro | paginate: { itemsPerPage: 3, currentPage: p }   ">
+                        <td>{{item.FirstName}}</td>
+                        <td>{{item.LastName}}</td>
+                        <td>{{item.Address}}</td>
+                        <td>{{item.Age}}</td>
+                        <td>{{item.Salary}}</td>
+                        <td><button type="button" (click)="DeleteEmployees(item.Id)"><i  class="fa fa-remove" style="font-size:36px ;color: red;"></i></button></td>
+                        <td><button type="button"  (click)="GetEmployeesById(item.Id)"><i class='fas fa-edit' style='font-size:36px;color: royalblue;'></i></button></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+</div>
+</div>
+<!-- <ul>
+    <li *ngFor="let item of collection | paginate: { itemsPerPage: 10, currentPage: p }"> ... </li>
+  </ul>
+              -->
+              <!-- <ngx-spinner type="ball-scale-multiple"></ngx-spinner> -->
+              <ngx-spinner
+              bdColor="rgba(0, 0, 0, 1)"
+              template="<img src='https://media.tenor.com/6gHLhmwO87sAAAAi/gg.gif'>"
+            >
+            </ngx-spinner>
+<!-- <ngx-ui-loader ></ngx-ui-loader> -->
+<!-- <ngx-spinner
+
+bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"type="ball-scale-multiple"><p style="font-size: 20px; color: white">Loading...</p></ngx-spinner> -->
